@@ -65,7 +65,7 @@ app.get('/', async (req, res) => {
 });
 
 app.use('/api/v1/auth', proxy(config.AUTH_GATEWAY));
-app.use('/api/v1/store', proxy(config.B2B_GATEWAY));
+app.use('/api/v1/b2b', proxy(config.B2B_GATEWAY));
 app.use('/api/v1/storage', proxy(config.STORAGE_GATEWAY));
 
 app.all(/(.*)/, (req: Request, res: Response, next: NextFunction) => {
