@@ -17,5 +17,28 @@
     "eslint.config.js",
     "eslint.config.cjs",
     "eslint.config.mjs"
+  ],
+  "references": [
+    {
+      "path": "../../libs/validator/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/utils/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/types/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/security/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/protect/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/middlewares/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/cloud/tsconfig.lib.json"
+    }
   ]
 }
