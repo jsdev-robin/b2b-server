@@ -1,14 +1,21 @@
-import express from 'express';
+import app from './app';
+import { config } from './configs/configs';
 
-const host = process.env.HOST ?? 'localhost';
-const port = process.env.PORT ? Number(process.env.PORT) : 3000;
-
-const app = express();
-
-app.get('/', (req, res) => {
-  res.send({ message: 'Hello API' });
+app.listen(Number(config.GATEWAY_PORT), () => {
+  console.log(
+    `🚀 Gateway server is running on port ${config.GATEWAY_PORT} in ${config.NODE_ENV}`,
+  );
 });
 
-app.listen(port, host, () => {
-  console.log(`[ ready ] http://${host}:${port}`);
+// Handle uncaught exceptions
+process.on('uncaughtException', (err: Error) => {
+  console.error('❌ UNCAUGHT EXCEPTION! 💥 Shutting down...');
+  console.error(err.name, err.message);
+  process.exit(1);
+});
+
+// Handle unhandled promise rejections
+process.on('unhandledRejection', (err: Error) => {
+  console.error('❌ UNHANDLED PROMISE REJECTION 💥:', err.message);
+  process.exit(1);
 });
