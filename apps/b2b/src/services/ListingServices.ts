@@ -2,7 +2,7 @@ import { HTTPException } from '@server/middlewares';
 import { catchAsync, Status, StatusCodes } from '@server/utils';
 import { NextFunction, Request, RequestHandler, Response } from 'express';
 import z from 'zod';
-import { ListingModel } from '../models/Service';
+import { ListingModel } from '../models/Listing';
 import QueryFind from '../utils/QueryFind';
 import { ZodId, ZodListingSchema } from '../validators/ZodListingSchema';
 import { ZodQuerySchema } from '../validators/ZodQuerySchema';
