@@ -112,11 +112,7 @@ export class ListingServices {
         );
       }
 
-      res.status(StatusCodes.OK).json({
-        status: Status.SUCCESS,
-        message: 'Service listing deleted successfully',
-        payload: { service: data },
-      });
+      res.status(StatusCodes.NO_CONTENT).send();
     },
   );
 }

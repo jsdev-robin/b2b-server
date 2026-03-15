@@ -1,7 +1,7 @@
 import { validationRequest } from '@server/validator';
 import express, { Router } from 'express';
 import { ListingServices } from '../services/ListingServices';
-import { ZodListingSchema } from '../validators/ZodListingSchema';
+import { ZodId, ZodListingSchema } from '../validators/ZodListingSchema';
 import { ZodQuerySchema } from '../validators/ZodQuerySchema';
 
 const router: Router = express.Router();
@@ -13,6 +13,7 @@ router
 
 router
   .route('/:id')
+  .all(validationRequest({ params: ZodId }))
   .patch(
     validationRequest({ body: ZodListingSchema }),
     ListingServices.findByIdAndUpdate,
