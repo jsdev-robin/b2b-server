@@ -32,6 +32,12 @@
     },
     {
       "path": "./libs/validator"
+    },
+    {
+      "path": "./apps/b2b-e2e"
+    },
+    {
+      "path": "./apps/b2b"
     }
   ]
 }
