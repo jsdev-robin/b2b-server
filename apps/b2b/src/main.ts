@@ -8,6 +8,8 @@ import {
   initializeRedis,
 } from './configs/initializeConnection';
 
+// Set custom DNS servers for Node.js DNS module
+// Note: 8.8.8.8 is Google's DNS, 1.1.1.1 is Cloudflare's DNS
 dns.setServers(['1.1.1.1', '8.8.8.8']);
 
 const httpServer = http.createServer(app);
