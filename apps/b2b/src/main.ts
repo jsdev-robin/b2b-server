@@ -49,9 +49,9 @@ async function gracefulShutdown(server: http.Server, signal: string) {
   }
 })();
 
-httpServer.listen(Number(config.STORE_PORT), () => {
+httpServer.listen(Number(config.B2B_PORT), () => {
   console.log(
-    `🚀 Store server is running on port ${config.STORE_PORT} in ${config.NODE_ENV}`,
+    `🚀 B2B server is running on port ${config.B2B_PORT} in ${config.NODE_ENV}`,
   );
 });
 
