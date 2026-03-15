@@ -6,7 +6,7 @@ export const ZodListingSchema = z.object({
     .string()
     .nonempty('Service Title is required')
     .max(100, 'Title is too long'),
-  price: z.number().min(1, 'Price is required'),
+  price: z.string().min(1, 'Price is required').transform(Number),
   category: z
     .string()
     .nonempty('Category is required')
