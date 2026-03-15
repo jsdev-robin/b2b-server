@@ -1,2 +1,10 @@
 packages:
-  - "apps/*"
+  - 'apps/*'
+  - 'libs/cloud'
+  - 'libs/emails'
+  - 'libs/middlewares'
+  - 'libs/protect'
+  - 'libs/security'
+  - 'libs/types'
+  - 'libs/utils'
+  - 'libs/validator'

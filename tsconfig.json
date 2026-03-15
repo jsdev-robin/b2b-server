@@ -8,6 +8,30 @@
     },
     {
       "path": "./apps/gateway"
+    },
+    {
+      "path": "./libs/cloud"
+    },
+    {
+      "path": "./libs/emails"
+    },
+    {
+      "path": "./libs/middlewares"
+    },
+    {
+      "path": "./libs/protect"
+    },
+    {
+      "path": "./libs/security"
+    },
+    {
+      "path": "./libs/types"
+    },
+    {
+      "path": "./libs/utils"
+    },
+    {
+      "path": "./libs/validator"
     }
   ]
 }
