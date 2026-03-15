@@ -1,1 +1,1 @@
-export * from './lib/emails.js';
+export * from './lib/transporter/SendMail.js';

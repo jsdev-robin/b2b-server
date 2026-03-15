@@ -15,6 +15,18 @@
     }
   },
   "dependencies": {
+    "@server/cloud": "workspace:*",
+    "@server/middlewares": "workspace:*",
+    "@server/security": "workspace:*",
+    "@server/types": "workspace:*",
+    "@server/utils": "workspace:*",
+    "express-useragent": "^2.1.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.3.0",
+    "tldts": "^7.0.25",
     "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.10"
   }
 }
