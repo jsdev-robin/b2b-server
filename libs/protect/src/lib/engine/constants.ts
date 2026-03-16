@@ -23,7 +23,7 @@ export const ENABLE_DEVTUNNELS = false;
 // tp8963f2-8001.asse.devtunnels.ms
 // Domain booklist
 export const SUB_DOMAIN = {
-  [Role.SUPER_ADMIN]: 'devmun',
+  [Role.SUPER_ADMIN]: 'b2b-web.devmun.xyz',
   [Role.GUEST]: 'role.duvmun.xyz',
 };
 
