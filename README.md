@@ -50,7 +50,7 @@ This project implements a secure B2B Service Marketplace with complete CRUD func
 
 ### Frontend
 
-- Next.js 14, TypeScript
+- Next.js 15, TypeScript
 - Tailwind CSS
 - React Hook Form + Zod
 - Axios, Headless UI
