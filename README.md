@@ -10,24 +10,6 @@ A full-stack B2B service marketplace application with separate Next.js frontend 
 - **Auth Service**: [http://b2b-auth.devmun.xyz](http://b2b-auth.devmun.xyz)
 - **Storage Service**: [http://b2b-storage.devmun.xyz](http://b2b-storage.devmun.xyz)
 
-## 📋 Table of Contents
-
-- [Project Overview](#project-overview)
-- [Tech Stack](#tech-stack)
-- [Architecture](#architecture)
-- [Backend Setup](#backend-setup)
-- [Frontend Setup](#frontend-setup)
-- [API Documentation](#api-documentation)
-- [Feature Implementation](#feature-implementation)
-- [Code Quality](#code-quality)
-- [Environment Variables](#environment-variables)
-- [Folder Structure](#folder-structure)
-- [Design Decisions](#design-decisions)
-- [Testing](#testing)
-- [Deployment](#deployment)
-- [Contributing](#contributing)
-- [License](#license)
-
 ## 🎯 Project Overview
 
 This project implements a secure B2B Service Marketplace with complete CRUD functionality for managing service listings. The application demonstrates:
