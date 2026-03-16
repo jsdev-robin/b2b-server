@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "pnpx nx run-many --target=serve --all --parcel --no-tui",
-    "dev:app": "pnpx nx run-many --target=serve --projects=gateway,b2b --parallel --no-tui",
+    "dev:app": "pnpx nx run-many --target=serve --projects=gateway,auth,b2b --parallel --no-tui",
     "dev:gateway": "pnpx nx serve gateway --no-tui",
     "build": "pnpx nx run-many --target=build --all",
     "prod:build": "pnpx nx run-many --target=build --configuration=production --all",
