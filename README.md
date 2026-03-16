@@ -54,7 +54,3 @@ This project implements a secure B2B Service Marketplace with complete CRUD func
 - Tailwind CSS
 - React Hook Form + Zod
 - RTK, Headless UI
-
-## 🏗 Architecture
-
-### Backend Architecture (Feature-Based)
