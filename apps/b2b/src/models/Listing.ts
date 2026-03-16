@@ -1,4 +1,4 @@
-import mongoose, { Document, Model, Schema } from 'mongoose';
+import mongoose, { Document, Model, Schema, Types } from 'mongoose';
 
 export interface IListing extends Document {
   title: string;
@@ -7,6 +7,7 @@ export interface IListing extends Document {
   description: string;
   createdAt?: Date;
   updatedAt?: Date;
+  user?: Types.ObjectId;
 }
 
 const ListingSchema: Schema<IListing> = new Schema<IListing>(
@@ -15,6 +16,7 @@ const ListingSchema: Schema<IListing> = new Schema<IListing>(
     price: { type: Number, required: true, min: 0 },
     category: { type: String, required: true, trim: true },
     description: { type: String, required: true, trim: true },
+    user: { type: Schema.Types.ObjectId, ref: 'User' },
   },
   {
     timestamps: true,

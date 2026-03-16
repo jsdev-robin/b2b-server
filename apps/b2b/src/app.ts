@@ -6,6 +6,7 @@ import cors from 'cors';
 import express, { Application, NextFunction, Request, Response } from 'express';
 import morgan from 'morgan';
 import { config } from './configs/configs';
+import listingRouter from './routes/listingRoutes';
 
 const app: Application = express();
 
@@ -47,6 +48,8 @@ app.get('/', async (req, res) => {
     version: '1.0.0',
   });
 });
+
+app.use('/services', listingRouter);
 
 // Handle 404 errors
 app.all(/(.*)/, (req: Request, res: Response, next: NextFunction) => {
