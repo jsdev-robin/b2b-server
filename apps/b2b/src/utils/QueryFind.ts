@@ -5,7 +5,7 @@ interface QueryParams {
   limit?: string;
   sort?: string;
   fields?: string;
-  [key: string]: string | number | undefined;
+  [key: string]: string | number | unknown;
 }
 
 class QueryFind<T extends Document> {
@@ -21,13 +21,34 @@ class QueryFind<T extends Document> {
     const queryObj: Record<string, unknown> = { ...this.queryString };
     const excludedFields = ['page', 'sort', 'limit', 'fields'];
     excludedFields.forEach((el) => delete queryObj[el]);
+
     let queryStr = JSON.stringify(queryObj);
+
     queryStr = queryStr.replace(
       /\b(eq|ne|gt|gte|lt|lte|in|nin|regex|exists|all|size|elemMatch|type|mod|not|and|or|nor|text|where|geoWithin|geoIntersects|near|nearSphere|expr|jsonSchema|bitsAllClear|bitsAllSet|bitsAnyClear|bitsAnySet|rand)\b/g,
       (match) => `$${match}`,
     );
-    this.query = this.query.find(JSON.parse(queryStr));
 
+    const parsedQuery = JSON.parse(queryStr);
+    Object.keys(parsedQuery).forEach((key) => {
+      const val = parsedQuery[key];
+      if (typeof val === 'string') {
+        parsedQuery[key] = { $regex: val, $options: 'i' };
+      }
+    });
+
+    this.query = this.query.find(parsedQuery);
+    return this;
+  }
+
+  globalFilter(fields: string[], queryKey = 'q'): this {
+    const query = this.queryString[queryKey];
+    if (query && typeof query === 'string') {
+      const orFilters = fields.map((field) => ({
+        [field]: { $regex: query, $options: 'i' },
+      }));
+      this.query = this.query.find({ $or: orFilters });
+    }
     return this;
   }
 

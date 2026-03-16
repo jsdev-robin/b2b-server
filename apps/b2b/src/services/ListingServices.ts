@@ -41,6 +41,7 @@ export class ListingServices {
 
       // apply filters, sorting, field limiting, pagination
       const query = new QueryFind(baseQuery, req.query)
+        .globalFilter(['title', 'price', 'category'])
         .filter()
         .sort()
         .limitFields()
