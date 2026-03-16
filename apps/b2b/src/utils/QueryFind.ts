@@ -92,7 +92,7 @@ class QueryFind<T extends Document> {
 export default QueryFind;
 
 // Ref
-// new QueryFind(ProductModel.find(), query)
+// new QueryFind(collection.find(), query)
 //   .filter()
 //   .sort()
 //   .limitFields()
