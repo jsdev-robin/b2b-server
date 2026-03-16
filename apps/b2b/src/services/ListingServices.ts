@@ -44,7 +44,8 @@ export class ListingServices {
         .filter()
         .sort()
         .limitFields()
-        .paginate().query;
+        .paginate()
+        .exec();
 
       // total listings count
       const totalCount = ListingModel.countDocuments();
@@ -61,7 +62,7 @@ export class ListingServices {
     },
   );
 
-  static findById: RequestHandler = catchAsync(
+  static findOne: RequestHandler = catchAsync(
     async (
       req: Request<z.infer<typeof ZodId>, unknown, unknown>,
       res: Response,

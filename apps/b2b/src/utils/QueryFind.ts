@@ -62,6 +62,10 @@ class QueryFind<T extends Document> {
 
     return this;
   }
+
+  async exec(): Promise<T[]> {
+    return await this.query.exec();
+  }
 }
 
 export default QueryFind;

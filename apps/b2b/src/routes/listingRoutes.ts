@@ -26,7 +26,7 @@ router
     validationRequest({ body: ZodListingSchema }),
     ListingServices.findOneAndUpdate,
   )
-  .get(ListingServices.findById)
+  .get(ListingServices.findOne)
   .delete(ListingServices.findOneAndDelete);
 
 export default router;
