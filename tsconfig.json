@@ -38,6 +38,12 @@
     },
     {
       "path": "./apps/b2b"
+    },
+    {
+      "path": "./apps/auth-e2e"
+    },
+    {
+      "path": "./apps/auth"
     }
   ]
 }

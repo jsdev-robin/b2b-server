@@ -42,7 +42,11 @@
       "options": {
         "targetName": "test"
       },
-      "exclude": ["apps/gateway-e2e/**/*", "apps/b2b-e2e/**/*"]
+      "exclude": [
+        "apps/gateway-e2e/**/*",
+        "apps/b2b-e2e/**/*",
+        "apps/auth-e2e/**/*"
+      ]
     },
     {
       "plugin": "@nx/docker",

@@ -1,0 +1,161 @@
+{
+  "name": "@server/auth",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "targets": {
+      "build": {
+        "executor": "@nx/esbuild:esbuild",
+        "outputs": [
+          "{options.outputPath}"
+        ],
+        "defaultConfiguration": "production",
+        "options": {
+          "platform": "node",
+          "outputPath": "apps/auth/dist",
+          "format": [
+            "cjs"
+          ],
+          "bundle": false,
+          "main": "apps/auth/src/main.ts",
+          "tsConfig": "apps/auth/tsconfig.app.json",
+          "assets": [
+            "apps/auth/src/assets"
+          ],
+          "esbuildOptions": {
+            "sourcemap": true,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        },
+        "configurations": {
+          "development": {},
+          "production": {
+            "esbuildOptions": {
+              "sourcemap": false,
+              "outExtension": {
+                ".js": ".js"
+              }
+            }
+          }
+        }
+      },
+      "prune-lockfile": {
+        "dependsOn": [
+          "build"
+        ],
+        "cache": true,
+        "executor": "@nx/js:prune-lockfile",
+        "outputs": [
+          "{workspaceRoot}/apps/auth/dist/package.json",
+          "{workspaceRoot}/apps/auth/dist/pnpm-lock.yaml"
+        ],
+        "options": {
+          "buildTarget": "build"
+        }
+      },
+      "copy-workspace-modules": {
+        "dependsOn": [
+          "build"
+        ],
+        "cache": true,
+        "outputs": [
+          "{workspaceRoot}/apps/auth/dist/workspace_modules"
+        ],
+        "executor": "@nx/js:copy-workspace-modules",
+        "options": {
+          "buildTarget": "build"
+        }
+      },
+      "prune": {
+        "dependsOn": [
+          "prune-lockfile",
+          "copy-workspace-modules"
+        ],
+        "executor": "nx:noop"
+      },
+      "serve": {
+        "continuous": true,
+        "executor": "@nx/js:node",
+        "defaultConfiguration": "development",
+        "dependsOn": [
+          "build"
+        ],
+        "options": {
+          "buildTarget": "@server/auth:build",
+          "runBuildTargetDependencies": false
+        },
+        "configurations": {
+          "development": {
+            "buildTarget": "@server/auth:build:development"
+          },
+          "production": {
+            "buildTarget": "@server/auth:build:production"
+          }
+        }
+      },
+      "test": {
+        "options": {
+          "passWithNoTests": true
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "@server/cloud": "workspace:*",
+    "@server/emails": "workspace:*",
+    "@server/middlewares": "workspace:*",
+    "@server/protect": "workspace:*",
+    "@server/security": "workspace:*",
+    "@server/types": "workspace:*",
+    "@server/utils": "workspace:*",
+    "@simplewebauthn/server": "^13.3.0",
+    "@upstash/redis": "^1.37.0",
+    "bcryptjs": "^3.0.3",
+    "body-parser": "^2.2.2",
+    "connect-redis": "^9.0.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "device-uuid": "^3.0.1",
+    "dotenv": "^17.3.1",
+    "ejs": "^5.0.1",
+    "express": "^4.21.2",
+    "express-http-proxy": "^2.1.2",
+    "express-rate-limit": "^8.3.1",
+    "express-session": "^1.19.0",
+    "express-useragent": "^2.1.0",
+    "express-validator": "^7.3.1",
+    "helmet": "^8.1.0",
+    "ipinfo-express": "^2.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.3.0",
+    "morgan": "^1.10.1",
+    "multer": "^2.1.1",
+    "nodemailer": "^8.0.2",
+    "passport": "^0.7.0",
+    "passport-github2": "^0.1.12",
+    "passport-google-oauth20": "^2.0.0",
+    "qrcode": "^1.5.4",
+    "redis": "^5.11.0",
+    "socket.io": "^4.8.3",
+    "speakeasy": "^2.0.0",
+    "tldts": "^7.0.25"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.6",
+    "@types/cookie-parser": "^1.4.10",
+    "@types/cors": "^2.8.19",
+    "@types/ejs": "^3.1.5",
+    "@types/express-session": "^1.18.2",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/morgan": "^1.9.10",
+    "@types/multer": "^2.1.0",
+    "@types/nodemailer": "^7.0.11",
+    "@types/passport": "^1.0.17",
+    "@types/passport-github2": "^1.2.9",
+    "@types/passport-google-oauth20": "^2.0.17",
+    "@types/qrcode": "^1.5.6",
+    "@types/speakeasy": "^2.0.10"
+  }
+}
