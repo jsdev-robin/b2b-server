@@ -91,7 +91,9 @@ const sendError = (err: CustomError, res: Response, isDev: boolean): void => {
   const statusCode = err.statusCode ?? StatusCodes.INTERNAL_SERVER_ERROR;
   const status = err.status ?? 'error';
 
-  if (isDev) {
+  console.log(isDev);
+
+  if (process.env.NODE_ENV === 'production') {
     res.status(statusCode).json({
       status,
       error: err,

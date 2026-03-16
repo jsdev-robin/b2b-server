@@ -5,17 +5,15 @@ import { IUser, Role } from '@server/types';
 import { catchAsync, StatusCodes } from '@server/utils';
 import { NextFunction, Request, RequestHandler, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import { parse } from 'tldts';
 import { CookieService } from './engine/CookieService.js';
 import { DOMAIN_COOKIE } from './engine/constants.js';
 
 export class Protect extends CookieService {
   public validateToken: RequestHandler = catchAsync(
     async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-      const host = parse(req.hostname).hostname;
+      // const host = parse(req.hostname).hostname;
+      const host = 'devmun'; // this is test mode, in vercel not working, need realtime server like railway,aws,etc.
       const { ACCESS } = DOMAIN_COOKIE[host as keyof typeof DOMAIN_COOKIE];
-
-      console.log('Debug Mode — Hostname:', host);
 
       if (!ACCESS) {
         return next(

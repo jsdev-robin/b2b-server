@@ -21,10 +21,9 @@ export const ENABLE_DEVTUNNELS = false;
 
 // Role-based cookie mapping
 // tp8963f2-8001.asse.devtunnels.ms
-
 // Domain booklist
 export const SUB_DOMAIN = {
-  [Role.SUPER_ADMIN]: 'localhost',
+  [Role.SUPER_ADMIN]: 'devmun',
   [Role.GUEST]: 'role.duvmun.xyz',
 };
 

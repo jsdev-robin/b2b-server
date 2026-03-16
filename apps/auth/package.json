@@ -16,11 +16,20 @@
           "format": [
             "cjs"
           ],
-          "bundle": false,
+          "bundle": true,
           "main": "apps/auth/src/main.ts",
           "tsConfig": "apps/auth/tsconfig.app.json",
           "assets": [
-            "apps/auth/src/assets"
+            {
+              "input": "libs/emails/src/lib/templates",
+              "glob": "**/*",
+              "output": "templates"
+            },
+            {
+              "input": "apps/auth/assets",
+              "glob": "**/*",
+              "output": "."
+            }
           ],
           "esbuildOptions": {
             "sourcemap": true,

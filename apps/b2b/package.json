@@ -16,7 +16,7 @@
           "format": [
             "cjs"
           ],
-          "bundle": false,
+          "bundle": true,
           "main": "apps/b2b/src/main.ts",
           "tsConfig": "apps/b2b/tsconfig.app.json",
           "assets": [
@@ -110,6 +110,7 @@
     "@server/types": "workspace:*",
     "@server/utils": "workspace:*",
     "@server/validator": "workspace:*",
+    "@upstash/redis": "^1.37.0",
     "body-parser": "^2.2.2",
     "bwip-js": "^4.8.0",
     "cookie-parser": "^1.4.7",
@@ -129,6 +130,8 @@
     "qs": "^6.15.0",
     "redis": "^5.11.0",
     "slugify": "^1.6.8",
+    "tldts": "^7.0.25",
+    "tslib": "^2.3.0",
     "zod": "^4.3.6"
   },
   "devDependencies": {

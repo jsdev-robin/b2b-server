@@ -291,6 +291,9 @@ importers:
       '@server/validator':
         specifier: workspace:*
         version: link:../../libs/validator
+      '@upstash/redis':
+        specifier: ^1.37.0
+        version: 1.37.0
       body-parser:
         specifier: ^2.2.2
         version: 2.2.2
@@ -348,6 +351,12 @@ importers:
       slugify:
         specifier: ^1.6.8
         version: 1.6.8
+      tldts:
+        specifier: ^7.0.25
+        version: 7.0.25
+      tslib:
+        specifier: ^2.3.0
+        version: 2.8.1
       zod:
         specifier: ^4.3.6
         version: 4.3.6
