@@ -15,6 +15,7 @@ export const ZodListingSchema = z.object({
     .string()
     .nonempty('Description is required')
     .max(1000, 'Description is too long'),
+  confirmed: z.boolean(),
 });
 
 export const ZodId = z.object({

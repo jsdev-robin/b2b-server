@@ -5,6 +5,7 @@ export interface IListing extends Document {
   price: number;
   category: string;
   description: string;
+  confirmed: boolean;
   createdAt?: Date;
   updatedAt?: Date;
   user?: Types.ObjectId;
@@ -16,6 +17,7 @@ const ListingSchema: Schema<IListing> = new Schema<IListing>(
     price: { type: Number, required: true, min: 0 },
     category: { type: String, required: true, trim: true },
     description: { type: String, required: true, trim: true },
+    confirmed: { type: Boolean, default: false },
     user: { type: Schema.Types.ObjectId, ref: 'User' },
   },
   {
