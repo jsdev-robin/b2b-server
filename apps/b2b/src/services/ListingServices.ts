@@ -9,6 +9,28 @@ import { ZodId, ZodListingSchema } from '../validators/ZodListingSchema';
 import { ZodQuerySchema } from '../validators/ZodQuerySchema';
 
 export class ListingServices {
+  static createMany: RequestHandler = catchAsync(
+    async (
+      req: Request<unknown, unknown, z.infer<typeof ZodListingSchema>[]>,
+      res: Response,
+    ): Promise<void> => {
+      const userId = new mongoose.Types.ObjectId(req.self._id);
+
+      const docs = req.body.map((item) => ({
+        user: userId,
+        ...item,
+      }));
+
+      const data = await ListingModel.insertMany(docs);
+
+      res.status(StatusCodes.CREATED).json({
+        status: Status.CREATED,
+        message: 'Service listings created successfully',
+        payload: { services: data },
+      });
+    },
+  );
+
   static create: RequestHandler = catchAsync(
     async (
       req: Request<unknown, unknown, z.infer<typeof ZodListingSchema>>,
@@ -41,8 +63,8 @@ export class ListingServices {
 
       // apply filters, sorting, field limiting, pagination
       const query = new QueryFind(baseQuery, req.query)
-        .globalFilter(['title', 'price', 'category'])
         .filter()
+        .globalFilter(['title'])
         .sort()
         .limitFields()
         .paginate()

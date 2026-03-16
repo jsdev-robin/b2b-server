@@ -41,13 +41,15 @@ class QueryFind<T extends Document> {
     return this;
   }
 
-  globalFilter(fields: string[], queryKey = 'q'): this {
-    const query = this.queryString[queryKey];
-    if (query && typeof query === 'string') {
-      const orFilters = fields.map((field) => ({
-        [field]: { $regex: query, $options: 'i' },
+  globalFilter(fields: string[]): this {
+    const search = this.queryString.q as string;
+    if (search && fields.length > 0) {
+      const orConditions = fields.map((field) => ({
+        [field]: { $regex: search, $options: 'i' },
       }));
-      this.query = this.query.find({ $or: orFilters });
+
+      this.query = this.query.model.find();
+      this.query = this.query.find({ $or: orConditions });
     }
     return this;
   }
