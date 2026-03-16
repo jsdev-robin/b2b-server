@@ -9,28 +9,6 @@ import { ZodId, ZodListingSchema } from '../validators/ZodListingSchema';
 import { ZodQuerySchema } from '../validators/ZodQuerySchema';
 
 export class ListingServices {
-  static createMany: RequestHandler = catchAsync(
-    async (
-      req: Request<unknown, unknown, z.infer<typeof ZodListingSchema>[]>,
-      res: Response,
-    ): Promise<void> => {
-      const userId = new mongoose.Types.ObjectId(req.self._id);
-
-      const docs = req.body.map((item) => ({
-        user: userId,
-        ...item,
-      }));
-
-      const data = await ListingModel.insertMany(docs);
-
-      res.status(StatusCodes.CREATED).json({
-        status: Status.CREATED,
-        message: 'Service listings created successfully',
-        payload: { services: data },
-      });
-    },
-  );
-
   static create: RequestHandler = catchAsync(
     async (
       req: Request<unknown, unknown, z.infer<typeof ZodListingSchema>>,
